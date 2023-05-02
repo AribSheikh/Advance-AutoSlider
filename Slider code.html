@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style type="text/css">
+        :root {
+            --delay: 2s;
+        }
+
+        .Slider-main-container {
+            height: 650px;
+            width: 100%;
+            display: flex;
+        }
+
+        .container {
+            display: flex;
+            height: 650px;
+            width: 100%;
+            overflow-x: auto;
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            overflow: hidden;
+            transition: background-image 0.9s;
+            margin-left: -50px;
+        }
+
+        .industries {
+            margin-bottom: -190px;
+            padding-left: 100px;
+            padding-top: 50px;
+            position: absolute;
+        }
+
+        .industries h4 {
+            font-size: 100px;
+            font-weight: 800;
+            color: #fff;
+            font-family: poppins;
+            opacity: 0.6;
+        }
+
+        .swiper-slide {
+            flex-shrink: 0;
+            height: 650px;
+            display: flex;
+            position: relative;
+            width: var(--widths);
+            margin-left: 5px;
+            background: rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(0px);
+            -webkit-backdrop-filter: blur(0px);
+        }
+
+        .main {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .main .img-text {
+            margin-top: 320px;
+            transition: margin-top 0.5s;
+            padding-left: 50px;
+            padding-right: 50px;
+            text-align: left;
+        }
+
+        .main .img-text p {
+            display: block;
+            padding-top: 30px;
+            font-size: 16px;
+        }
+
+        .main .img-text .learnmore {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .learnmore p {
+            font-size: 22px !important;
+        }
+
+        .slider-svg {
+            height: 20px;
+            width: 20px;
+            margin-left: 10px;
+        }
+
+        .content {
+            height: 600px;
+            width: 100%;
+        }
+
+        .img-text {
+            width: 100%;
+            height: auto;
+            margin-top: 450px;
+            position: relative;
+            line-height: 25px;
+            transition: 0.5s ease;
+            display: inline-block;
+            text-align: center;
+            color: #fff;
+            transition: margin-top 0.5s;
+        }
+
+        .img-text p {
+            display: none;
+
+        }
+
+        .img-text h4 {
+            line-height: 15px;
+            padding: 0;
+            margin: 16px 0;
+            font-size: 28px;
+            color: #fff;
+            font-weight: 800;
+        }
+
+        .img-text .learnmore {
+            font-size: 18px;
+            font-weight: bold;
+            color: #9628E5;
+            justify-content: left;
+            align-items: center;
+            display: none;
+            margin-top: -30px !important;
+        }
+
+        .back {
+            height: 600px;
+            width: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .next {
+            height: 600px;
+            width: 50px;
+            margin-left: -50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btnlabel {
+            z-index: 10;
+            cursor: pointer;
+        }
+
+        .pre {
+            animation: pre var(--delay);
+        }
+
+        @keyframes pre {
+            0% {
+                margin-left: var(--margin);
+            }
+
+            100% {
+                margin-left: 0px;
+            }
+        }
+
+        .slide-active {
+            animation: slide-active var(--delay) none;
+            margin-left: var(--margin);
+        }
+
+
+        @keyframes slide-active {
+            0% {
+                margin-left: 0px;
+            }
+
+            100% {
+                margin-left: var(--margin);
+            }
+        }
+
+        @media only screen and (min-width: 0px) {
+            :root {
+                --widths: 100%;
+                --margin: -100%;
+            }
+
+        }
+
+        @media only screen and (max-width: 480px) {
+            .industries {
+                margin-bottom: -190px;
+                padding-left: 20px;
+            }
+
+            .industries h4 {
+                font-size: 50px;
+
+            }
+
+        }
+
+        @media only screen and (max-width: 600px) {
+            .industries {
+                margin-bottom: -190px;
+                padding-left: 20px;
+            }
+
+            .industries h4 {
+                font-size: 50px;
+
+            }
+
+        }
+
+        @media only screen and (min-width: 600px) {
+            .industries {
+                margin-bottom: -190px;
+                padding-left: 40px;
+            }
+
+            .industries h4 {
+                font-size: 80px;
+
+            }
+
+        }
+
+
+        @media only screen and (min-width: 900px) {
+            :root {
+                --widths: 50%;
+                --margin: -50%;
+            }
+
+            .industries {
+                margin-bottom: -190px;
+                padding-left: 80px;
+            }
+
+            .industries h4 {
+                font-size: 100px;
+
+            }
+        }
+
+
+        @media only screen and (min-width: 1100px) {
+            :root {
+                --widths: 33%;
+                --margin: -33%;
+            }
+
+            .industries {
+                margin-bottom: -190px;
+                padding-left: 100px;
+            }
+
+            .industries h4 {
+                font-size: 100px;
+
+            }
+        }
+
+
+        @media only screen and (min-width: 1500px) {
+            :root {
+                --widths: 25%;
+                --margin: -25%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class=industries>
+        <h4>
+            Muhammad Aarib
+        </h4>
+    </div>
+    <div class="Slider-main-container">
+        <div class="back">
+            <label onclick="back()" class="btnlabel">
+                <svg class="" style=" transform: rotate(180deg);" width="28" height="26" viewBox="0 0 28 26"
+                    fill="none">
+                    <path d="M15 2L26 13M26 13L15 24M26 13L2 13" stroke="white" stroke-width="4" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </svg>
+            </label>
+        </div>
+        <div class="container" id="container">
+
+            <!-- Slide 1 Start-->
+            <div class="swiper-slide" id="Slide1" data-slide="1">
+                <div class="content" onmouseover="Mhover(1,true)" onmouseleave="Mhover(1,false)">
+                    <span class="img-text">
+                        <h4>Retail</h4>
+                        <p>Databeys provides integrated digital business solutions to leading retail brands, enabling
+                            them to maintain a competitive edge over their rivals.</p>
+                    </span>
+                </div>
+            </div>
+            <!-- Slide 1 End-->
+
+            <!-- Slide 2 Start-->
+            <div class="swiper-slide" id="Slide2" data-slide="2">
+                <div class="content" onmouseover="Mhover(2,true)" onmouseleave="Mhover(2,false)">
+                    <span class="img-text">
+                        <h4>Communications</h4>
+                        <p>By leveraging innovation and disruptive technologies within the telecom industry, we help
+                            businesses increase their value and maintain relevance with customers.</p>
+                    </span>
+                </div>
+            </div>
+            <!-- Slide 2 End-->
+
+            <!-- Slide 3 Start-->
+            <div class="swiper-slide" id="Slide3" data-slide="3">
+                <div class="content" onmouseover="Mhover(3,true)" onmouseleave="Mhover(3,false)">
+                    <span class="img-text">
+                        <h4>Public Sector</h4>
+                        <p>Our efforts are directed toward driving transformation in public services through the
+                            implementation of smart, inclusive, and resilient solutions.</p>
+                    </span>
+                </div>
+            </div>
+            <!-- Slide 3 End-->
+
+            <!-- Slide 4 Start-->
+            <div class="swiper-slide" id="Slide4" data-slide="4">
+                <div class="content" onmouseover="Mhover(4,true)" onmouseleave="Mhover(4,false)">
+                    <span class="img-text">
+                        <h4>Construction</h4>
+                        <p>We provide value through execution and operational efficiency gains, productivity and safety
+                            improvements, enhanced user experiences, and unique go-to-market propositions.</p>
+                    </span>
+                </div>
+            </div>
+            <!-- Slide 4 End-->
+
+            <!-- Slide 5 Start-->
+            <div class="swiper-slide" id="Slide5" data-slide="5">
+                <div class="content" onmouseover="Mhover(5,true)" onmouseleave="Mhover(5,false)">
+                    <span class="img-text">
+                        <h4>Education</h4>
+                        <p>We support organizations in designing, customizing, implementing, managing, and improving
+                            various systems such as student information systems (SIS), learning management systems, and
+                            CRM.</p>
+                    </span>
+                </div>
+            </div>
+            <!-- Slide 5 End-->
+
+            <!-- Slide 6 Start-->
+            <div class="swiper-slide" id="Slide6" data-slide="6">
+                <div class="content" onmouseover="Mhover(6,true)" onmouseleave="Mhover(6,false)">
+                    <span class="img-text">
+                        <h4>Banking</h4>
+                        <p>Databeys assists banks and financial institutions in enhancing efficiency and profitability
+                            by providing enterprise integration, business process management, and robotic process
+                            automation solutions.</p>
+                    </span>
+                </div>
+            </div>
+            <!-- Slide 6 End-->
+
+
+        </div>
+        <div class="next">
+            <label onclick="next()" class="btnlabel">
+                <svg class="" width="28" height="26" viewBox="0 0 28 26" fill="none">
+                    <path d="M15 2L26 13M26 13L15 24M26 13L2 13" stroke="white" stroke-width="4" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </svg>
+            </label>
+        </div>
+    </div>
+
+    <script>
+        var timerId;
+
+        // slideanimation and slidedelay should be same (also set it from the CSS --delay) 
+        var slideanimation = 2000; //ms
+        var slidedelay = 2000;
+
+        // Total no of slides increase it by the number of slides you want
+        var numofslides = 6;
+
+        var flag = true;
+        var click = true;
+        var slide = 1;
+        var delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+        // Runs when back button clicked
+        async function back() {
+            if (click) {
+                click = false;
+                flag = false;
+                var element = document.getElementById('container').children[0];
+                element.classList.remove("main");
+                console.log(document.getElementById('container').children[parseInt(numofslides) - 1].dataset.slide);
+                var slides = document.getElementById('container').children[parseInt(numofslides) - 1].dataset.slide;
+                changebackground(slides);
+                var element = document.getElementById('container').children[parseInt(numofslides) - 1];
+                element.remove();
+                element.classList.add("pre");
+                element.classList.add("main");
+                container.prepend(element);
+                await delay(slideanimation);
+                click = true;
+                slide = slides
+                clearTimeout(timerId);
+                timerId = setTimeout(() => {
+                    flag = true
+                    run();
+                }, 2000);
+            }
+        }
+
+        // Runs when next button clicked
+        async function next() {
+            if (click) {
+                click = false;
+                flag = false;
+
+                var element2 = document.getElementById('container').children[1];
+                element2.classList.add("main");
+                var container = document.getElementById('container');
+                var element = document.getElementById('container').children[0];
+                var slides = document.getElementById('container').children[0].dataset.slide;
+                if (parseInt(slides) + 1 == parseInt(numofslides) + 1)
+                    changebackground(1);
+                else
+                    changebackground(parseInt(slides) + 1);
+                element.classList.add("slide-active");
+                element.classList.remove("main");
+                await delay(slideanimation);
+                element.remove();
+                element.classList.remove("slide-active");
+                container.append(element);
+                click = true;
+                slide = slides
+                clearTimeout(timerId);
+                timerId = setTimeout(() => {
+                    flag = true
+                    run();
+                }, 2000);
+            }
+        }
+        
+        // Main function for auto scroll
+        async function run() {
+            while (flag) {
+                await delay(slidedelay);
+                if (flag) {
+                    click = false;
+                    slide++;
+                    if (slide > numofslides) {
+                        slide = 1;
+                    }
+                    for (var i = 0; i < numofslides; i++) {
+                        var element = document.getElementById('container').children[i];
+                        element.classList.remove("main");
+                    }
+                    var container = document.getElementById('container');
+                    var element = document.getElementById('container').children[0];
+                    element.classList.add("slide-active");
+                    var element2 = document.getElementById('container').children[1];
+                    element2.classList.add("main");
+                    changebackground(slide);
+                    await delay(slideanimation);
+                    element.remove();
+                    element.classList.remove("slide-active");
+                    container.append(element);
+                    click = true;
+                }
+            }
+        }
+
+        // This function controls the slides background
+        function changebackground(slide) {
+            var container = document.getElementById('container');
+            if (slide == 1) {
+                container.style.backgroundImage = "url('https://staging.databeys.com/wp-content/uploads/2023/03/retail.png')";
+            }
+            else if (slide == 2) {
+                container.style.backgroundImage = "url('https://staging.databeys.com/wp-content/uploads/2023/03/communication.png')";
+            }
+            else if (slide == 3) {
+                container.style.backgroundImage = "url('https://staging.databeys.com/wp-content/uploads/2023/03/public-sector-1.png')";
+            }
+            else if (slide == 4) {
+                container.style.backgroundImage = "url('https://staging.databeys.com/wp-content/uploads/2023/03/construction.png')";
+            }
+            else if (slide == 5) {
+                container.style.backgroundImage = "url('https://staging.databeys.com/wp-content/uploads/2023/03/education-1.png')";
+            }
+            else if (slide == 6) {
+                container.style.backgroundImage = "url('https://staging.databeys.com/wp-content/uploads/2023/03/banking-1.png')";
+            }
+        }
+
+        // This function controls the mouse hover effect
+        function Mhover(num, flg) {
+            var cslide;
+            if (click) {
+                flag = true;
+                if (flg) {
+                    flag = false;
+                    changebackground(num);
+                    for (var i = 0; i < numofslides; i++) {
+                        var element = document.getElementById('container').children[i];
+                        if (document.getElementById('container').children[i].dataset.slide == num) {
+                            cslide = i;
+                        }
+                        element.classList.remove("main");
+                    }
+                    var element = document.getElementById('container').children[cslide];
+                    element.classList.add("main");
+                }
+                else {
+                    for (var i = 0; i < numofslides; i++) {
+                        var element = document.getElementById('container').children[i];
+                        if (document.getElementById('container').children[i].dataset.slide == num) {
+                            cslide = i;
+                        }
+                        element.classList.remove("main");
+                    }
+                    var element = document.getElementById('container').children[0];
+                    var slides = document.getElementById('container').children[0].dataset.slide;
+                    element.classList.add("main");
+                    changebackground(slides);
+                    slide = slides;
+                    clearTimeout(timerId);
+                    timerId = setTimeout(() => {
+                        run(slides);
+                    }, 2000);
+                }
+            }
+        }
+
+        changebackground(1);
+        var element2 = document.getElementById('container').children[0];
+        element2.classList.add("main");
+        run();
+    </script>
+</body>
+
+</html>
